@@ -36,14 +36,11 @@
 
       setTimeout(() => {
         overlay.style.transform = 'rotate(0deg)';
-      }, 150); // 0.15秒で戻る
+      }, 150);
     }
 
-    document.addEventListener('keydown', (e) => {
-      if (e.code === 'Space') {
-        tiltScreen();
-      }
-    });
+    // 1秒おきに傾く（デモ用）
+    setInterval(tiltScreen, 1000);
   </script>
 </body>
 </html>
