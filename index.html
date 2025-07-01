@@ -2,23 +2,50 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>OBS Test</title>
+  <title>台パン演出テスト</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       width: 100vw;
       height: 100vh;
-      background-color: rgba(0, 0, 0, 1);
+      background-color: black;
       color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 48px;
+      overflow: hidden;
+    }
+
+    #screen {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.1s ease;
     }
   </style>
 </head>
 <body>
-  OBS表示テスト成功！
+  <div id="screen">スペースで台パン！</div>
+
+  <script>
+    function doTiltEffect() {
+      const screen = document.getElementById('screen');
+      const angle = Math.random() * 10 - 5; // -5度〜+5度
+      screen.style.transform = `rotate(${angle}deg)`;
+      setTimeout(() => {
+        screen.style.transform = `rotate(0deg)`;
+      }, 100);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === ' ') {
+        doTiltEffect();
+      }
+    });
+  </script>
 </body>
 </html>
