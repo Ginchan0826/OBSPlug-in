@@ -1,49 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>台パン演出テスト</title>
+  <meta charset="UTF-8" />
+  <title>台パン演出</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       width: 100vw;
       height: 100vh;
-      background-color: black;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 48px;
+      background: transparent;
       overflow: hidden;
     }
-
-    #screen {
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      pointer-events: none;
+      background: transparent;
       transition: transform 0.1s ease;
     }
   </style>
 </head>
 <body>
-  <div id="screen">スペースで台パン！</div>
+  <div id="overlay"></div>
 
   <script>
-    function doTiltEffect() {
-      const screen = document.getElementById('screen');
-      const angle = Math.random() * 10 - 5; // -5度〜+5度
-      screen.style.transform = `rotate(${angle}deg)`;
+    const overlay = document.getElementById('overlay');
+
+    function tiltScreen() {
+      const angle = (Math.random() * 12 - 6).toFixed(2); // -6〜+6度
+      overlay.style.transform = `rotate(${angle}deg)`;
+
       setTimeout(() => {
-        screen.style.transform = `rotate(0deg)`;
-      }, 100);
+        overlay.style.transform = 'rotate(0deg)';
+      }, 150); // 0.15秒で戻る
     }
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === ' ') {
-        doTiltEffect();
+      if (e.code === 'Space') {
+        tiltScreen();
       }
     });
   </script>
