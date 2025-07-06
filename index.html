@@ -2,45 +2,26 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>台パン演出</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: 100vh;
-      background: transparent;
-      overflow: hidden;
-    }
-    #overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      background: transparent;
-      transition: transform 0.1s ease;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>勝率カウンター</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="overlay"></div>
-
-  <script>
-    const overlay = document.getElementById('overlay');
-
-    function tiltScreen() {
-      const angle = (Math.random() * 12 - 6).toFixed(2); // -6〜+6度
-      overlay.style.transform = `rotate(${angle}deg)`;
-
-      setTimeout(() => {
-        overlay.style.transform = 'rotate(0deg)';
-      }, 150);
-    }
-
-    // 1秒おきに傾く（デモ用）
-    setInterval(tiltScreen, 1000);
-  </script>
+  <div class="container">
+    <h1>🎮 勝率カウンター</h1>
+    <div class="stats">
+      <p>勝ち: <span id="wins">0</span></p>
+      <p>負け: <span id="losses">0</span></p>
+      <p>総対戦数: <span id="total">0</span></p>
+      <p>勝率: <span id="winrate">0%</span></p>
+    </div>
+    <div class="buttons">
+      <button onclick="addWin()">勝ち</button>
+      <button onclick="addLoss()">負け</button>
+      <button onclick="reset()">リセット</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
+
