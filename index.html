@@ -4,24 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>勝率カウンター</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <h1>🎮 勝率カウンター</h1>
     <div class="stats">
-      <p>勝ち: <span id="wins">0</span></p>
-      <p>負け: <span id="losses">0</span></p>
-      <p>総対戦数: <span id="total">0</span></p>
-      <p>勝率: <span id="winrate">0%</span></p>
+      <div class="card win">勝ち<br><span id="wins">0</span></div>
+      <div class="card loss">負け<br><span id="losses">0</span></div>
+      <div class="card total">総対戦数<br><span id="total">0</span></div>
+      <div class="card rate">勝率<br><span id="winrate">0%</span></div>
     </div>
     <div class="buttons">
-      <button onclick="addWin()">勝ち</button>
-      <button onclick="addLoss()">負け</button>
-      <button onclick="reset()">リセット</button>
+      <button class="btn win-btn" onclick="addWin()">＋勝ち</button>
+      <button class="btn loss-btn" onclick="addLoss()">＋負け</button>
+      <button class="btn reset-btn" onclick="reset()">リセット</button>
     </div>
   </div>
   <script src="script.js"></script>
 </body>
 </html>
-
